@@ -8,7 +8,9 @@ This is a plugin that kills people when they log out in a certain amount of time
 -When you are in combat you have a scoreboard which shows you the remaining time you are in combat.
 here is what it looks like:
 ![2024-07-29_11 39 17](https://github.com/user-attachments/assets/87f016c1-5988-489a-a355-6c83a4b9c6b7)
-\nthis is sadly not customizable yet but i will work on it in the future!
+
+
+this is sadly not customizable yet but i will work on it in the future!
 
 -You can set a custom combat time in the config.
 
