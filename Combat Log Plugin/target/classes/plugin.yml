@@ -1,0 +1,9 @@
+name: CombatLogPlugin
+author: YeatIsBetter114,Cooltechno
+version: '1.0'
+main: de.cooltechno.combalog.Main
+api-version: '1.20'
+commands:
+  forbid:
+    description: forbid a command while a player is in combat
+    usage: /forbid <command>

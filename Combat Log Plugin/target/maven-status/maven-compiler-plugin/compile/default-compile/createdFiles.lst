@@ -1,0 +1,7 @@
+de\cooltechno\combalog\listener\listener_AsyncCommand.class
+de\cooltechno\combalog\listener\listener_essential.class
+de\cooltechno\combalog\util\ScoreBoardLogic.class
+de\cooltechno\combalog\commands\command_addForbiddenCommand.class
+de\cooltechno\combalog\util\CombatTimerLogic.class
+de\cooltechno\combalog\Main.class
+de\cooltechno\combalog\util\ScoreBoardLogic$1.class
