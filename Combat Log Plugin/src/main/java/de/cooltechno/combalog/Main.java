@@ -1,6 +1,7 @@
 package de.cooltechno.combalog;
 
 import de.cooltechno.combalog.commands.command_addForbiddenCommand;
+import de.cooltechno.combalog.commands.command_removeForbiddenCommand;
 import de.cooltechno.combalog.listener.listener_AsyncCommand;
 import de.cooltechno.combalog.listener.listener_essential;
 import org.bukkit.Bukkit;
@@ -19,6 +20,7 @@ public final class Main extends JavaPlugin {
     public FileConfiguration conf;
     public ArrayList<String> forbcommands;
     private static Main plugin;
+    public List<String> ForbiddenCommands = (List<String>) Main.getPlugin().conf.getList("combat.forbidden.commands");
 
     @Override
     public void onEnable() {
@@ -33,6 +35,7 @@ public final class Main extends JavaPlugin {
         checkForSettingsFile();
 
         getCommand("forbid").setExecutor(new command_addForbiddenCommand());
+        getCommand("unforbid").setExecutor(new command_removeForbiddenCommand());
 
         Bukkit.getPluginManager().registerEvents(new listener_AsyncCommand(), this);
         Bukkit.getPluginManager().registerEvents(new listener_essential(),this);
@@ -89,7 +92,6 @@ public final class Main extends JavaPlugin {
     }
 
     public void AddForbidCommand(String Command) {
-        List<String> ForbiddenCommands = (List<String>) Main.getPlugin().conf.getList("combat.forbidden.commands");
         ForbiddenCommands.add(Command);
         conf.set("combat.forbidden.commands",ForbiddenCommands);
         try {
@@ -97,6 +99,17 @@ public final class Main extends JavaPlugin {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void RemoveForbidCommand(String Command){
+        ForbiddenCommands.remove(Command);
+        conf.set("combat.forbidden.commands",ForbiddenCommands);
+        try {
+            conf.save(settingsFile);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     public static Main getPlugin() {

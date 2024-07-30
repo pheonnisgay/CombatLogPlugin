@@ -7,3 +7,7 @@ commands:
   forbid:
     description: forbid a command while a player is in combat
     usage: /forbid <command>
+
+  unforbid:
+    description: unforbid a command that was previously forbidden during combat
+    usage: /unforbid <command>

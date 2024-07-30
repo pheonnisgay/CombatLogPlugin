@@ -8,8 +8,7 @@ import org.bukkit.entity.Player;
 
 import java.util.List;
 
-
-public class command_addForbiddenCommand implements CommandExecutor {
+public class command_removeForbiddenCommand implements CommandExecutor {
 
     List<String> ForbiddenCommands = (List<String>) Main.getPlugin().conf.getList("combat.forbidden.commands");
 
@@ -23,23 +22,23 @@ public class command_addForbiddenCommand implements CommandExecutor {
         Player player = (Player) sender;
 
         if (args.length != 1){
-            player.sendMessage(Main.getPlugin().getPrefix() + "Wrong Syntax: /forbid </command>");
-            return true;
-        }
-        String ForbiddenC = args[0];
-
-
-        if (!args[0].startsWith("/")){
-            player.sendMessage(Main.getPlugin().getPrefix() + "The command does not start with /. This is an example on how to forbid a command: /forbid /spawn");
+            player.sendMessage(Main.getPlugin().getPrefix() + "Wrong Syntax: /unforbid </command>");
             return true;
         }
 
-        if (ForbiddenCommands.contains(ForbiddenC)){
-            player.sendMessage(Main.getPlugin().getPrefix() + "This command is already forbidden.");
+        String com = args[0];
+
+        if (!com.startsWith("/")){
+            player.sendMessage(Main.getPlugin().getPrefix() + "Wrong Syntax: /unforbid </command>");
             return true;
         }
-        Main.getPlugin().AddForbidCommand(ForbiddenC);
-        player.sendMessage(Main.getPlugin().getPrefix() + ForbiddenC + " has been added to the Forbidden Commands in combat");
+
+        if (!ForbiddenCommands.contains(com)){
+            player.sendMessage(Main.getPlugin().getPrefix() + "The command" + com + "is not forbidden.");
+            return true;
+        }
+        Main.getPlugin().RemoveForbidCommand(com);
+        player.sendMessage(Main.getPlugin().getPrefix() + "You succesfully made " + com + " usable in combat again!");
         return true;
     }
 
